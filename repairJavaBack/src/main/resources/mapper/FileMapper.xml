@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="repairjava.mapper.FileMapper">
+    <insert id="uploadFile" parameterType="repairjava.utils.FileRecord">
+        insert into uploadfile(name, path, problemId, refactored)
+        values (#{name}, #{path}, #{problemId}, #{refactored})
+    </insert>
+
+    <select id="updateUploadFileTable" resultType="map">
+        analyze table uploadfile;
+    </select>
+
+    <update id="updateUploadFileRefactored">
+        update uploadfile set
+            refactored = true
+        where id = #{id}
+    </update>
+
+    <select id="getUploadFileId" resultType="int">
+        select auto_increment from information_schema.tables
+        where table_schema="gp" and table_name="uploadfile";
+    </select>
+
+    <select id="getUploadFilesByProblemId" resultType="map">
+        select id, name, refactored from uploadfile
+        where problemId = #{problemId}
+    </select>
+
+    <select id="getUploadFileById" resultType="repairjava.utils.FileRecord">
+        select name, path, problemId from uploadfile
+        where id = #{id}
+    </select>
+
+    <select id="getTestFileById" resultType="repairjava.utils.FileRecord">
+        select name, path, problemId from testfile
+        where id = #{id}
+    </select>
+
+
+</mapper>

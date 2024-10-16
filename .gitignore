@@ -3,7 +3,7 @@ target/
 output/
 data/repairRequest
 data/uploadFile
-repair-java-back/tmp
+repairJavaBack/tmp
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

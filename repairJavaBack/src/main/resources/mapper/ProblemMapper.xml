@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="repairjava.mapper.ProblemMapper">
+    <select id="getProblems" resultType="map">
+        select * from problem
+    </select>
+    <select id="getProblemById" resultType="map">
+        select * from problem
+        where id = #{id}
+    </select>
+</mapper>

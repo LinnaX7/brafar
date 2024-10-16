@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="repairjava.mapper.RequestMapper">
+    <select id="getRequests" resultType="map">
+        select * from repairrequest
+    </select>
+
+    <select id="getRequestById" resultType="map">
+        select * from repairrequest
+        where id = #{id}
+    </select>
+
+    <select id="updateRepairRequestTable" resultType="map">
+        analyze table repairrequest;
+    </select>
+
+    <select id="getRequestId" resultType="int">
+        select auto_increment from information_schema.tables
+        where table_schema="gp" and table_name="repairrequest";
+    </select>
+
+    <insert id="saveRequest" parameterType="repairjava.utils.RequestRecord">
+        insert into repairrequest(problemId, uploadFileId, resultPath, timeStamp, status)
+        values (#{problemId}, #{uploadFileId}, #{resultPath}, #{timeStamp}, #{status})
+    </insert>
+
+    <update id="updateRequestStatus">
+        update repairrequest set
+            repairTime = #{repairTime},
+            status = "finished"
+        where id = #{id}
+    </update>
+
+    <update id="updateRequestResult">
+        update repairrequest set
+            result = #{result}
+        where id = #{id}
+    </update>
+</mapper>
