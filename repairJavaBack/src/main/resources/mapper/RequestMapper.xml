@@ -16,7 +16,7 @@
 
     <select id="getRequestId" resultType="int">
         select auto_increment from information_schema.tables
-        where table_schema="gp" and table_name="repairrequest";
+        where table_schema="brafar" and table_name="repairrequest";
     </select>
 
     <insert id="saveRequest" parameterType="repairjava.utils.RequestRecord">

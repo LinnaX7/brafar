@@ -18,7 +18,7 @@
 
     <select id="getUploadFileId" resultType="int">
         select auto_increment from information_schema.tables
-        where table_schema="gp" and table_name="uploadfile";
+        where table_schema="brafar" and table_name="uploadfile";
     </select>
 
     <select id="getUploadFilesByProblemId" resultType="map">
